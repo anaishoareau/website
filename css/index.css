@@ -1,0 +1,55 @@
+/* =========================
+   VARIABLES
+   ========================= */
+
+:root {
+  --text-color:       #000;
+  --text-color-hover: #777;
+  --line-spacing:     1.6em;
+}
+
+/* =========================
+   LAYOUT GLOBAL
+   ========================= */
+
+body.index {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #fff;
+  overflow: hidden;
+}
+
+/* =========================
+   LISTE DE MOTS
+   ========================= */
+
+.word-list {
+  text-align: center;
+}
+
+/* =========================
+   MOTS / LIENS
+   ========================= */
+
+.word-item {
+  display: block;
+
+  font-family: 'Source Serif 4', serif;
+  font-size: 1rem;
+
+  color: var(--text-color);
+  text-decoration: none;
+
+  line-height: var(--line-spacing);
+  transition: color 0.2s ease;
+}
+
+.word-item:hover {
+  color: var(--text-color-hover);
+}

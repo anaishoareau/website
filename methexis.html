@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>methexis</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+  <style>
+    /* ── Collage desktop ───────────────────────────────────────────────────── */
+    .collage {
+      position: relative;
+      width: 100%;
+    }
+
+    .collage-item {
+      position: absolute;
+    }
+
+    .collage-item img {
+      display: block;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    /* Label sous l'élément */
+    .collage-label {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+      margin-top: 4px;
+      text-align: right;
+    }
+
+    /* Texte collage */
+    .collage-text {
+      font-family: 'Source Serif 4', serif;
+      line-height: 1.55;
+      color: #111;
+    }
+    .collage-text em {
+      font-style: italic;
+    }
+
+    /* ── Player audio ─────────────────────────────────────────────────────── */
+    .audio-player {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+    /* Ligne principale : bouton + barre + temps */
+    .audio-player__controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Bouton play/pause */
+    .audio-player__btn {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      background: none;
+      border: 1.5px solid #111;
+      border-radius: 50%;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, color 0.15s;
+    }
+    .audio-player__btn:hover {
+      background: #111;
+    }
+    .audio-player__btn:hover svg {
+      fill: #fff;
+      stroke: #fff;
+    }
+    .audio-player__btn svg {
+      fill: #111;
+      stroke: none;
+      width: 11px;
+      height: 11px;
+    }
+    /* Icône pause : deux barres */
+    .audio-player__btn .icon-pause {
+      display: none;
+    }
+    .audio-player--playing .icon-play {
+      display: none;
+    }
+    .audio-player--playing .icon-pause {
+      display: block;
+    }
+
+    /* Barre de progression */
+    .audio-player__progress {
+      flex: 1;
+      min-width: 0;
+      height: 1.5px;
+      background: #ccc;
+      cursor: pointer;
+      position: relative;
+    }
+    .audio-player__progress-fill {
+      height: 100%;
+      background: #111;
+      width: 0%;
+      pointer-events: none;
+    }
+
+    /* Temps restant */
+    .audio-player__time {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.7rem;
+      color: #555;
+      white-space: nowrap;
+      min-width: 32px;
+      text-align: right;
+    }
+
+    audio { display: none; }
+
+    /* Neutralise le padding du body sur les pages collage */
+    .body--collage {
+      padding: 0;
+    }
+    /* Le collage démarre sous le header fixe (80px) */
+    .body--collage .collage {
+      margin-top: var(--header-height, 80px);
+    }
+
+    /* ── Mobile : empilement vertical ─────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .collage {
+        height: auto !important;
+      }
+      .collage-item {
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+        width: 100% !important;
+        margin-bottom: 24px;
+      }
+      .collage-item img {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body class="body--collage">
+
+<header class="site-header">
+  <a href="index.html" class="site-logo">AH</a>
+</header>
+
+<main class="collage" id="collage"></main>
+
+<div class="lightbox" id="lightbox">
+  <img src="" alt="">
+</div>
+
+<script src="methexis-config.js"></script>
+<script>
+  const BASE_WIDTH       = 1920;
+  const MOBILE_BREAKPOINT = 700;
+  const SVG_NS           = 'http://www.w3.org/2000/svg';
+
+  const collage     = document.getElementById('collage');
+  const lightbox    = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+
+  // ── Utilitaires ──────────────────────────────────────────────────────────
+
+  function formatTime(seconds) {
+    if (!isFinite(seconds)) return '—';
+    const m   = Math.floor(seconds / 60);
+    const sec = Math.floor(seconds % 60);
+    return m + ':' + String(sec).padStart(2, '0');
+  }
+
+  function createSvgIcon(className, shapes) {
+    const svg = document.createElementNS(SVG_NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 11 13');
+    svg.classList.add(className);
+    shapes.forEach(({ tag, attrs }) => {
+      const el = document.createElementNS(SVG_NS, tag);
+      Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+      svg.appendChild(el);
+    });
+    return svg;
+  }
+
+  function createPlayIcon() {
+    return createSvgIcon('icon-play', [
+      { tag: 'polygon', attrs: { points: '0,0 11,6.5 0,13' } }
+    ]);
+  }
+
+  function createPauseIcon() {
+    return createSvgIcon('icon-pause', [
+      { tag: 'rect', attrs: { x: '0', y: '0', width: '4', height: '13' } },
+      { tag: 'rect', attrs: { x: '7', y: '0', width: '4', height: '13' } }
+    ]);
+  }
+
+  // ── Constructeurs d'éléments ─────────────────────────────────────────────
+
+  function createImageItem(item) {
+    const wrap = document.createElement('div');
+    wrap.className = 'collage-item';
+
+    const img = document.createElement('img');
+    img.src = item.src;
+    img.alt = item.alt || '';
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.add('active');
+    });
+    wrap.appendChild(img);
+
+    if (item.label) {
+      const label = document.createElement('div');
+      label.className = 'collage-label';
+      label.textContent = item.label;
+      wrap.appendChild(label);
+    }
+
+    return wrap;
+  }
+
+  function createTextItem(item) {
+    const wrap = document.createElement('div');
+    wrap.className = 'collage-item';
+
+    const div = document.createElement('div');
+    div.className = 'collage-text';
+    if (item.taille) div.style.fontSize = item.taille; // rem fixe, ne scale pas
+    if (item.style === 'italique') div.style.fontStyle = 'italic';
+    div.innerHTML = item.contenu.replace(/\n/g, '<br>');
+    wrap.appendChild(div);
+
+    return wrap;
+  }
+
+  function createAudioItem(item) {
+    const wrap = document.createElement('div');
+    wrap.className = 'collage-item';
+
+    const player   = document.createElement('div');
+    player.className = 'audio-player';
+
+    const controls = document.createElement('div');
+    controls.className = 'audio-player__controls';
+
+    const playBtn = document.createElement('button');
+    playBtn.className = 'audio-player__btn';
+    playBtn.setAttribute('aria-label', 'Lecture / Pause');
+    playBtn.type = 'button';
+    playBtn.appendChild(createPlayIcon());
+    playBtn.appendChild(createPauseIcon());
+    controls.appendChild(playBtn);
+
+    const progressBar  = document.createElement('div');
+    progressBar.className = 'audio-player__progress';
+    const progressFill = document.createElement('div');
+    progressFill.className = 'audio-player__progress-fill';
+    progressBar.appendChild(progressFill);
+    controls.appendChild(progressBar);
+
+    const timeEl = document.createElement('div');
+    timeEl.className = 'audio-player__time';
+    timeEl.textContent = '—';
+    controls.appendChild(timeEl);
+
+    player.appendChild(controls);
+
+    if (item.src) {
+      const audio = document.createElement('audio');
+      audio.src = item.src;
+
+      audio.addEventListener('timeupdate', () => {
+        const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+        progressFill.style.width = pct + '%';
+        timeEl.textContent = '-' + formatTime(audio.duration - audio.currentTime);
+      });
+
+      audio.addEventListener('loadedmetadata', () => {
+        timeEl.textContent = '-' + formatTime(audio.duration);
+      });
+
+      audio.addEventListener('ended', () => {
+        player.classList.remove('audio-player--playing');
+        progressFill.style.width = '0%';
+        timeEl.textContent = '-' + formatTime(audio.duration);
+      });
+
+      playBtn.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.play();
+          player.classList.add('audio-player--playing');
+        } else {
+          audio.pause();
+          player.classList.remove('audio-player--playing');
+        }
+      });
+
+      progressBar.addEventListener('click', (e) => {
+        if (!audio.duration) return;
+        const rect  = progressBar.getBoundingClientRect();
+        const ratio = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = ratio * audio.duration;
+      });
+
+      wrap.appendChild(audio);
+    }
+
+    wrap.appendChild(player);
+    return wrap;
+  }
+
+  // ── Construction du collage ──────────────────────────────────────────────
+
+  const builders = {
+    image : createImageItem,
+    texte : createTextItem,
+    son   : createAudioItem,
+  };
+
+  // Tri par y croissant (puis x) pour respecter l'ordre visuel sur mobile
+  const sortedElements = [...METHEXIS_CONFIG.elements].sort((a, b) => a.y - b.y || a.x - b.x);
+
+  const wrappers = sortedElements.map(item => {
+    const build = builders[item.type];
+    if (!build) return null;
+    const wrap = build(item);
+    wrap._config = item;
+    collage.appendChild(wrap);
+    return wrap;
+  }).filter(Boolean);
+
+  // ── Mise à l'échelle (desktop uniquement) ────────────────────────────────
+
+  function applyScale() {
+    if (window.innerWidth <= MOBILE_BREAKPOINT) return; // mobile géré par CSS
+
+    const scale = window.innerWidth / BASE_WIDTH;
+    collage.style.height = (METHEXIS_CONFIG.pageHeight * scale) + 'px';
+
+    wrappers.forEach(wrap => {
+      const item = wrap._config;
+      wrap.style.left  = (item.x     * scale) + 'px';
+      wrap.style.top   = (item.y     * scale) + 'px';
+      wrap.style.width = (item.width * scale) + 'px';
+    });
+  }
+
+  window.addEventListener('resize', applyScale);
+  applyScale();
+
+  // ── Lightbox ─────────────────────────────────────────────────────────────
+
+  lightbox.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+</script>
+
+</body>
+</html>
