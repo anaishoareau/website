@@ -1,0 +1,11 @@
+/* Reset basique */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 5rem 2rem 2rem;
+  background: #ffffff;
+  font-family: 'Source Serif 4', serif;
+}
