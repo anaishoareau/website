@@ -26,6 +26,12 @@
       cursor: pointer;
     }
 
+    .collage-item video {
+      display: block;
+      width: 100%;
+      pointer-events: none;
+    }
+
     /* Label sous l'élément */
     .collage-label {
       font-family: 'Source Serif 4', serif;
@@ -164,6 +170,7 @@
 
 <div class="lightbox" id="lightbox">
   <img src="" alt="">
+  <video src="" loop muted playsinline disablepictureinpicture style="display:none"></video>
 </div>
 
 <script src="methexis-config.js"></script>
@@ -172,9 +179,35 @@
   const MOBILE_BREAKPOINT = 700;
   const SVG_NS           = 'http://www.w3.org/2000/svg';
 
-  const collage     = document.getElementById('collage');
-  const lightbox    = document.getElementById('lightbox');
-  const lightboxImg = lightbox.querySelector('img');
+  const collage        = document.getElementById('collage');
+  const lightbox       = document.getElementById('lightbox');
+  const lightboxImg    = lightbox.querySelector('img');
+  const lightboxVideo  = lightbox.querySelector('video');
+
+  function openLightbox(type, src, alt) {
+    if (type === 'video') {
+      lightboxImg.style.display   = 'none';
+      lightboxVideo.style.display = '';
+      lightboxVideo.src = src;
+      lightboxVideo.play();
+    } else {
+      lightboxVideo.style.display = 'none';
+      lightboxVideo.pause();
+      lightboxVideo.src           = '';
+      lightboxImg.style.display   = '';
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+    }
+    lightbox.classList.add('active');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    lightboxVideo.pause();
+    lightboxVideo.src           = '';
+    lightboxVideo.style.display = 'none';
+    lightboxImg.style.display   = '';
+  }
 
   // ── Utilitaires ──────────────────────────────────────────────────────────
 
@@ -220,8 +253,7 @@
     img.src = item.src;
     img.alt = item.alt || '';
     img.addEventListener('click', () => {
-      lightboxImg.src = img.src;
-      lightbox.classList.add('active');
+      openLightbox('image', img.src, img.alt);
     });
     wrap.appendChild(img);
 
@@ -243,14 +275,45 @@
     div.className = 'collage-text';
     if (item.taille) div.style.fontSize = item.taille; // rem fixe, ne scale pas
     if (item.style === 'italique') div.style.fontStyle = 'italic';
+
+    // Alignement horizontal du texte (gauche par défaut)
+    if (item.alignTexte === 'droite') div.style.textAlign = 'right';
+
     div.innerHTML = item.contenu.replace(/\n/g, '<br>');
     wrap.appendChild(div);
 
     return wrap;
   }
 
-  function createAudioItem(item) {
+  function createVideoItem(item) {
     const wrap = document.createElement('div');
+    wrap.className = 'collage-item';
+
+    const video = document.createElement('video');
+    video.src = item.src;
+    video.autoplay = true;
+    video.loop = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.style.pointerEvents = 'auto';
+    video.style.cursor = 'pointer';
+    video.addEventListener('click', () => {
+      openLightbox('video', item.src, item.alt);
+    });
+    video.setAttribute('controlslist', 'nodownload nofullscreen noremoteplayback');
+    wrap.appendChild(video);
+
+    if (item.label) {
+      const label = document.createElement('div');
+      label.className = 'collage-label';
+      label.textContent = item.label;
+      wrap.appendChild(label);
+    }
+
+    return wrap;
+  }
+
+  function createAudioItem(item) {    const wrap = document.createElement('div');
     wrap.className = 'collage-item';
 
     const player   = document.createElement('div');
@@ -331,6 +394,7 @@
     image : createImageItem,
     texte : createTextItem,
     son   : createAudioItem,
+    video : createVideoItem,
   };
 
   // Tri par y croissant (puis x) pour respecter l'ordre visuel sur mobile
@@ -355,9 +419,30 @@
 
     wrappers.forEach(wrap => {
       const item = wrap._config;
-      wrap.style.left  = (item.x     * scale) + 'px';
-      wrap.style.top   = (item.y     * scale) + 'px';
       wrap.style.width = (item.width * scale) + 'px';
+
+      const needsAdjust = item.type === 'texte' && (item.ancreV === 'bas' || item.ancreH === 'droite');
+
+      if (needsAdjust) {
+        // Positionnement provisoire pour que le navigateur calcule les dimensions réelles
+        wrap.style.left = (item.x * scale) + 'px';
+        wrap.style.top  = (item.y * scale) + 'px';
+        requestAnimationFrame(() => {
+          const w = wrap.offsetWidth;
+          const h = wrap.offsetHeight;
+          // ancreH: "droite" → x désigne le bord droit du bloc
+          wrap.style.left = item.ancreH === 'droite'
+            ? (item.x * scale - w) + 'px'
+            : (item.x * scale) + 'px';
+          // ancreV: "bas" → y désigne le bord bas du bloc
+          wrap.style.top = item.ancreV === 'bas'
+            ? (item.y * scale - h) + 'px'
+            : (item.y * scale) + 'px';
+        });
+      } else {
+        wrap.style.left = (item.x * scale) + 'px';
+        wrap.style.top  = (item.y * scale) + 'px';
+      }
     });
   }
 
@@ -367,7 +452,7 @@
   // ── Lightbox ─────────────────────────────────────────────────────────────
 
   lightbox.addEventListener('click', () => {
-    lightbox.classList.remove('active');
+    closeLightbox();
   });
 </script>
 

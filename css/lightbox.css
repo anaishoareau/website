@@ -16,7 +16,8 @@
   pointer-events: auto;
 }
 
-.lightbox img {
+.lightbox img,
+.lightbox video {
   max-width: 90%;
   max-height: 90%;
 }
