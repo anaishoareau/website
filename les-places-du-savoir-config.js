@@ -32,15 +32,60 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
   pageHeight: 3400,
 
   elements: [
-    // {
-    //   type   : "image",
-    //   src    : "images/les-places-du-savoir/nom-du-fichier.jpg",
-    //   x      : 32,
-    //   y      : 32,
-    //   width  : 800,
-    //   label  : "(a).",
-    //   alt    : "description"
-    // },
+    {
+      type   : "image",
+      src    : "images/les-places-du-savoir/DSCF3321.jpg",
+      x      : 64,
+      y      : 170,
+      width  : 1118.477,
+      label  : "(a).",
+      alt    : "description"
+    },
+    {
+      type   : "image",
+      src    : "images/les-places-du-savoir/DSCF3407.jpg",
+      x      : 213,
+      y      : 1080,
+      width  : 677,
+      label  : "(b).",
+      alt    : "description"
+    },
+    {
+      type   : "image",
+      src    : "images/les-places-du-savoir/DSCF3344.jpg",
+      x      : 922,
+      y      : 1506,
+      width  : 560,
+      label  : "(c).",
+      alt    : "description"
+    },
+    {
+      type   : "image",
+      src    : "images/les-places-du-savoir/DSCF3391.jpg",
+      x      : 128,
+      y      : 2370,
+      width  : 400,
+      label  : "(d).",
+      alt    : "description"
+    },
+    {
+      type   : "image",
+      src    : "images/les-places-du-savoir/DSCF3178.jpg",
+      x      : 592,
+      y      : 2280,
+      width  : 622,
+      label  : "(e).",
+      alt    : "description"
+    },
+    {
+      type   : "image",
+      src    : "images/les-places-du-savoir/DSCF3360.jpg",
+      x      : 1246,
+      y      : 2582,
+      width  : 307,
+      label  : "(f).",
+      alt    : "description"
+    },
     // {
     //   type    : "texte",
     //   contenu : "Texte à afficher",
@@ -48,22 +93,6 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
     //   y       : 32,
     //   width   : 500,
     //   taille  : "0.7rem"
-    // },
-    // {
-    //   type  : "video",
-    //   src   : "videos/les-places-du-savoir/nom-du-fichier.mp4",
-    //   x     : 32,
-    //   y     : 32,
-    //   width : 800,
-    //   label : "(a).",
-    //   alt   : "description"
-    // },
-    // {
-    //   type  : "son",
-    //   src   : "sons/les-places-du-savoir/nom-du-fichier.m4a",
-    //   x     : 32,
-    //   y     : 32,
-    //   width : 400,
     // },
   ]
 

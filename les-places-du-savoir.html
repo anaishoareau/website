@@ -447,11 +447,149 @@
   window.addEventListener('resize', applyScale);
   applyScale();
 
-  // ── Lightbox ─────────────────────────────────────────────────────────────
+  // ── Lightbox : zoom & drag ────────────────────────────────────────────────
 
-  lightbox.addEventListener('click', () => {
+  let lbScale    = 1;
+  let lbX        = 0;
+  let lbY        = 0;
+  let dragging   = false;
+  let dragStartX = 0;
+  let dragStartY = 0;
+  let dragOriginX = 0;
+  let dragOriginY = 0;
+  const SCALE_MIN = 1;
+  const SCALE_MAX = 5;
+  const SCALE_STEP = 0.35;
+
+  function lbTarget() {
+    return lightboxImg.style.display !== 'none' ? lightboxImg : lightboxVideo;
+  }
+
+  function applyTransform() {
+    const el = lbTarget();
+    el.style.transform = `translate(${lbX}px, ${lbY}px) scale(${lbScale})`;
+    lightbox.classList.toggle('zoomed', lbScale > 1);
+  }
+
+  function resetZoom() {
+    lbScale = 1;
+    lbX = 0;
+    lbY = 0;
+    applyTransform();
+  }
+
+  function clampTranslation() {
+    const el  = lbTarget();
+    const rect = el.getBoundingClientRect();
+    const vw  = window.innerWidth;
+    const vh  = window.innerHeight;
+    const overX = Math.max(0, rect.width  - vw)  / 2;
+    const overY = Math.max(0, rect.height - vh) / 2;
+    lbX = Math.max(-overX, Math.min(overX, lbX));
+    lbY = Math.max(-overY, Math.min(overY, lbY));
+  }
+
+  // Scroll (desktop)
+  lightbox.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const delta = e.deltaY < 0 ? SCALE_STEP : -SCALE_STEP;
+    lbScale = Math.max(SCALE_MIN, Math.min(SCALE_MAX, lbScale + delta));
+    if (lbScale === SCALE_MIN) { lbX = 0; lbY = 0; }
+    clampTranslation();
+    applyTransform();
+  }, { passive: false });
+
+  // Double-clic : reset
+  lightbox.addEventListener('dblclick', (e) => {
+    e.stopPropagation();
+    resetZoom();
+  });
+
+  // Drag (mouse)
+  lightbox.addEventListener('mousedown', (e) => {
+    if (lbScale <= 1) return;
+    dragging   = true;
+    dragStartX = e.clientX;
+    dragStartY = e.clientY;
+    dragOriginX = lbX;
+    dragOriginY = lbY;
+    lightbox.classList.add('dragging');
+    e.preventDefault();
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    lbX = dragOriginX + (e.clientX - dragStartX);
+    lbY = dragOriginY + (e.clientY - dragStartY);
+    clampTranslation();
+    applyTransform();
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!dragging) return;
+    dragging = false;
+    lightbox.classList.remove('dragging');
+  });
+
+  // Pinch (touch / trackpad)
+  let lastPinchDist = null;
+
+  lightbox.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 2) {
+      lastPinchDist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+    } else if (e.touches.length === 1 && lbScale > 1) {
+      dragging    = true;
+      dragStartX  = e.touches[0].clientX;
+      dragStartY  = e.touches[0].clientY;
+      dragOriginX = lbX;
+      dragOriginY = lbY;
+    }
+  }, { passive: true });
+
+  lightbox.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      if (lastPinchDist) {
+        const ratio = dist / lastPinchDist;
+        lbScale = Math.max(SCALE_MIN, Math.min(SCALE_MAX, lbScale * ratio));
+        if (lbScale === SCALE_MIN) { lbX = 0; lbY = 0; }
+        clampTranslation();
+        applyTransform();
+      }
+      lastPinchDist = dist;
+    } else if (e.touches.length === 1 && dragging) {
+      lbX = dragOriginX + (e.touches[0].clientX - dragStartX);
+      lbY = dragOriginY + (e.touches[0].clientY - dragStartY);
+      clampTranslation();
+      applyTransform();
+    }
+  }, { passive: false });
+
+  lightbox.addEventListener('touchend', (e) => {
+    if (e.touches.length < 2) lastPinchDist = null;
+    if (e.touches.length === 0) dragging = false;
+  });
+
+  // Fermeture : seulement si pas en train de zoomer/drag et échelle = 1
+  lightbox.addEventListener('click', (e) => {
+    if (dragging) return;
+    if (lbScale > 1) return; // clic sur image zoomée = pas de fermeture
     closeLightbox();
   });
+
+  const _origClose = closeLightbox;
+  // eslint-disable-next-line no-global-assign
+  closeLightbox = function () {
+    resetZoom();
+    _origClose();
+  };
 </script>
 
 </body>
