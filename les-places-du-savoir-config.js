@@ -34,7 +34,7 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
   elements: [
     {
       type   : "image",
-      src    : "images/les-places-du-savoir/DSCF3321.jpg",
+      src    : "images/les-places-du-savoir/DSCF3321.webp",
       x      : 64,
       y      : 225,
       width  : 1118.477,
@@ -59,7 +59,7 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/les-places-du-savoir/DSCF3407.jpg",
+      src    : "images/les-places-du-savoir/DSCF3407.webp",
       x      : 213,
       y      : 1080+40,
       width  : 677,
@@ -68,7 +68,7 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/les-places-du-savoir/DSCF3344.jpg",
+      src    : "images/les-places-du-savoir/DSCF3344.webp",
       x      : 922,
       y      : 1506,
       width  : 560,
@@ -77,7 +77,7 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/les-places-du-savoir/DSCF3391.jpg",
+      src    : "images/les-places-du-savoir/DSCF3391.webp",
       x      : 128,
       y      : 2370,
       width  : 400,
@@ -86,7 +86,7 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/les-places-du-savoir/DSCF3178.jpg",
+      src    : "images/les-places-du-savoir/DSCF3178.webp",
       x      : 592,
       y      : 2280,
       width  : 622,
@@ -95,7 +95,7 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/les-places-du-savoir/DSCF3360.jpg",
+      src    : "images/les-places-du-savoir/DSCF3360.webp",
       x      : 1246,
       y      : 2582,
       width  : 307,
