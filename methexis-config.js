@@ -29,7 +29,7 @@
 const METHEXIS_CONFIG = {
 
   // Hauteur totale de la page en px sur base 1920px
-  pageHeight: 3400,
+  pageHeight: 7840+800,
 
   elements: [
     {
@@ -61,7 +61,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type    : "texte",
-      contenu : "(a). <em>Mathys et l'étoile de mer</em>, 2026\n (b). Inspiration : <em>Led Zepplin</em>, Dick Barnatt, 1970\n(c). Inspiration : <em>Benidorm, Spain</em>, Martin Parr, 1997\n(d). Extrait sonore et notes sur l'entretien avec Mathys\n(e). <em>la prison des âmes (lieu dans l'univers du roman de Mathys)</em>, 2026\n",
+      contenu : "(a). <em>Mathys et l'étoile de mer</em>, 2026\n (b). Inspiration : <em>Led Zepplin</em>, Dick Barnatt, 1970\n(c). Inspiration : <em>Benidorm, Spain</em>, Martin Parr, 1997\n(d). Notes sur l'entretien avec Mathys\n(e). <em>la prison des âmes (lieu dans l'univers du roman de Mathys)</em>, 2026\n",
       x       : 112,
       y       : 1664.874,
       width   : 608,
@@ -85,7 +85,7 @@ const METHEXIS_CONFIG = {
       y     : 1832,
       width : 402.735,
       label : "(d).",
-      alt   : "Extrait sonore et notes sur l'entretien avec Mathys"
+      alt   : "Notes sur l'entretien avec Mathys"
     },
     {
       type  : "image",
@@ -260,10 +260,10 @@ const METHEXIS_CONFIG = {
     },
     {
       type    : "texte",
-      contenu : "(n). Miniature des planches du projet <em>methexis</em> dans le portfolio\n(o). <em>auto-évaluation</em>, 2026 (motif du papier peint)\n(p). <em>Jade et le ver rouge</em>, 2026\n(q). Inspiration : vidéos issues de <em>Dance in Close-Up, Hans van Manen seen by Erwin Olaf series</em>, Erwin Olaf, 2022 (photographie prise au Stedelijk Museum, à Amsterdam)",
+      contenu : "(n). Miniature des planches du projet <em>methexis</em> dans le portfolio\n(o). <em>auto-évaluation</em>, 2026 (motif du papier peint)\n(p). <em>Jade et le ver rouge</em>, 2026\n(q). Inspiration : vidéos issues de <em>Dance in Close-Up, Hans van Manen seen by Erwin Olaf series</em>, Erwin Olaf, 2022 (photographie prise au Stedelijk Museum, à Amsterdam)\n(r). Inspiration : <em>Sculpture hystérique</em>, Christophe Berdaguer et Marie Péjus, 2017 (photographie prise au MO.CO., à Montpellier)",
       x       : 832,
-      y       : 7489.583,
-      width   : 608,
+      y       : 7489.583+50,
+      width   : 650,
       taille  : "0.7rem"
     },
     {
@@ -276,8 +276,17 @@ const METHEXIS_CONFIG = {
       alt   : "Jade et le ver rouge, 2026"
     },
     {
+      type  : "image",
+      src   : "images/methexis/20250504_montpellier_moco_eprouver-l-inconnu_christophe-berdaguer-et-marie-pejus_sculpture-hysterique_2017_detail.JPG",
+      x     : 1344,
+      y     : 8192,
+      width : 245.43,
+      label : "(r).",
+      alt   : "Inspiration : Sculpture hystérique, Christophe Berdaguer et Marie Péjus, 2017"
+    },
+    {
       type    : "texte",
-      contenu : "Le projet est aussi un lieu d'expérimentation. Je teste et nourris du travail d’artistes de tous horizons.",
+      contenu : "Le projet est aussi un lieu d'expérimentation. Je teste et me nourris du travail d’artistes de tous horizons.",
       x       : 160,
       y       : 7840,
       width   : 495,
@@ -286,6 +295,7 @@ const METHEXIS_CONFIG = {
       ancreH  : "gauche",
       alignTexte : "gauche"
     },
+    
         // {
     //   type  : "son",
     //   src   : "sons/methexis/extrait-entretien-mathys-isolement.m4a",

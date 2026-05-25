@@ -273,10 +273,9 @@
 
     const div = document.createElement('div');
     div.className = 'collage-text';
-    if (item.taille) div.style.fontSize = item.taille; // rem fixe, ne scale pas
+    if (item.taille) div.style.fontSize = item.taille;
     if (item.style === 'italique') div.style.fontStyle = 'italic';
 
-    // Alignement horizontal du texte (gauche par défaut)
     if (item.alignTexte === 'droite') div.style.textAlign = 'right';
 
     div.innerHTML = item.contenu.replace(/\n/g, '<br>');
@@ -413,7 +412,7 @@
   // ── Mise à l'échelle (desktop uniquement) ────────────────────────────────
 
   function applyScale() {
-    if (window.innerWidth <= MOBILE_BREAKPOINT) return; // mobile géré par CSS
+    if (window.innerWidth <= MOBILE_BREAKPOINT) return;
 
     const scale = window.innerWidth / BASE_WIDTH;
     collage.style.height = (LES_PLACES_DU_SAVOIR_CONFIG.pageHeight * scale) + 'px';
