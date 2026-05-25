@@ -29,7 +29,7 @@
 const BEFORE_DONT_LOOK_UP_CONFIG = {
 
   // Hauteur totale de la page en px sur base 1920px
-  pageHeight: 3400,
+  pageHeight: 4830+500,
 
   elements: [
     {
@@ -84,6 +84,59 @@ const BEFORE_DONT_LOOK_UP_CONFIG = {
       y       : 1872.165,
       width   : 608,
       taille  : "0.7rem"
+    },
+    {
+      type    : "texte",
+      contenu : "(f). Inspiration : <em>France, Theatre of Authenticity</em>, Natacha de Mahieu\n(g). Inspiration : <em>Gloconde</em>, Rene Magritte, 1953\n(h). Inspiration : <em>El Ojo Eterno</em>, Grete Stern, 1950\n(i). Inspiration : <em>Red Stripe Kitchen</em>, Martha Rosler, from <em>House Beautiful: Bringing the War Home</em>, 1967-1972\n(j). Inspiration : <em>Photo Op</em>, Martha Rosler, from <em>House Beautiful: Bringing the War Home, New Series</em>, 2004-2008\n",
+      x       : 134,
+      y       : 3492,
+      width   : 608,
+      taille  : "0.7rem"
+    },
+    {
+      type   : "image",
+      src    : "images/before-dont-look-up/natacha-de-mahieu_france-theatre-of-authenticity.jpg",
+      x      : 960,
+      y      : 3349.1-60,
+      width  : 832,
+      label  : "(f).",
+      alt    : "Inspiration : France, Theatre of Authenticity, Natacha de Mahieu"
+    },
+    {
+      type   : "image",
+      src    : "images/before-dont-look-up/rene-magritte_gloconde_1953.jpg",
+      x      : 238,
+      y      : 3904-60,
+      width  : 402,
+      label  : "(g).",
+      alt    : "Inspiration : Gloconde, Rene Magritte, 1953"
+    },
+    {
+      type   : "image",
+      src    : "images/before-dont-look-up/grete-stern_el-ojo-eterno_1950.png",
+      x      : 214,
+      y      : 4560,
+      width  : 265,
+      label  : "(h).",
+      alt    : "Inspiration : El Ojo Eterno, Grete Stern, 1950"
+    },
+    {
+      type   : "image",
+      src    : "images/before-dont-look-up/martha-rosler_red-stripe-kitchen_1967-1972.jpg",
+      x      : 690,
+      y      : 4320,
+      width  : 574,
+      label  : "(i).",
+      alt    : "Inspiration : Red Stripe Kitchen, Martha Rosler, from House Beautiful: Bringing the War Home, 1967-1972"
+    },
+    {
+      type   : "image",
+      src    : "images/before-dont-look-up/martha-rosler_photo-op_2004.png",
+      x      : 1293.874,
+      y      : 4830,
+      width  : 441.144,
+      label  : "(j).",
+      alt    : "Inspiration : Photo Op, Martha Rosler, from House Beautiful: Bringing the War Home, New Series, 2004-2008"
     },
   ]
 

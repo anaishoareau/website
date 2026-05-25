@@ -29,17 +29,25 @@
 const LES_PLACES_DU_SAVOIR_CONFIG = {
 
   // Hauteur totale de la page en px sur base 1920px
-  pageHeight: 3400,
+  pageHeight: 3400-80,
 
   elements: [
     {
       type   : "image",
       src    : "images/les-places-du-savoir/DSCF3321.jpg",
       x      : 64,
-      y      : 170,
+      y      : 225-50,
       width  : 1118.477,
       label  : "(a).",
-      alt    : "description"
+      alt    : "bureau de Maxime à Lyon, 2025"
+    },
+    {
+      type    : "texte",
+      contenu : "(a). <em>bureau de Maxime à Lyon</em>, 2025\n(b). <em>entretien du vivarium</em>, 2025\n(c). <em>auto-portrait dans le bassin sur la terrasse</em>, 2025\n(d). <em>table du salon</em>, 2025\n(e). <em>les lamiacées</em>, 2025\n(f). <em>insecte du rez-de-chaussée</em>, 2025\n",
+      x       : 64+1118.477+32,
+      y       : 225-50,
+      width   : 608,
+      taille  : "0.7rem"
     },
     {
       type   : "image",
@@ -48,7 +56,7 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
       y      : 1080,
       width  : 677,
       label  : "(b).",
-      alt    : "description"
+      alt    : "entretien du vivarium, 2025"
     },
     {
       type   : "image",
@@ -57,7 +65,7 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
       y      : 1506,
       width  : 560,
       label  : "(c).",
-      alt    : "description"
+      alt    : "auto-portrait dans le bassin sur la terrasse, 2025"
     },
     {
       type   : "image",
@@ -66,7 +74,7 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
       y      : 2370,
       width  : 400,
       label  : "(d).",
-      alt    : "description"
+      alt    : "table du salon, 2025"
     },
     {
       type   : "image",
@@ -75,7 +83,7 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
       y      : 2280,
       width  : 622,
       label  : "(e).",
-      alt    : "description"
+      alt    : "les lamiacées, 2025"
     },
     {
       type   : "image",
@@ -84,7 +92,7 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
       y      : 2582,
       width  : 307,
       label  : "(f).",
-      alt    : "description"
+      alt    : "insecte du rez-de-chaussée, 2025"
     },
     // {
     //   type    : "texte",
