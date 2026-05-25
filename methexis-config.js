@@ -34,7 +34,7 @@ const METHEXIS_CONFIG = {
   elements: [
     {
       type   : "image",
-      src    : "images/methexis/mathys-et-l-etoile-de-mer.jpg",
+      src    : "images/methexis/mathys-et-l-etoile-de-mer.webp",
       x      : 32,
       y      : 32,
       width  : 1524.768,
@@ -43,7 +43,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "image",
-      src   : "images/methexis/dick-barnatt_led-zepplin.jpg",
+      src   : "images/methexis/dick-barnatt_led-zepplin.webp",
       x     : 32,
       y     : 1080.256,
       width : 578,
@@ -52,7 +52,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "image",
-      src   : "images/methexis/martin-parr_benidorm-spain.jpg",
+      src   : "images/methexis/martin-parr_benidorm-spain.webp",
       x     : 640,
       y     : 1080.256,
       width : 351.744,
@@ -80,7 +80,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "image",
-      src   : "images/methexis/notes-mathys-presentation.jpg",
+      src   : "images/methexis/notes-mathys-presentation.webp",
       x     : 781.265,
       y     : 1832,
       width : 402.735,
@@ -89,7 +89,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "image",
-      src   : "images/methexis/la-prison-des-ames-lieu-dans-l-univers-du-roman-de-mathys.jpg",
+      src   : "images/methexis/la-prison-des-ames-lieu-dans-l-univers-du-roman-de-mathys.webp",
       x     : 1216,
       y     : 1263.754,
       width : 672,
@@ -98,7 +98,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "image",
-      src   : "images/methexis/pieces-manquantes.jpg",
+      src   : "images/methexis/pieces-manquantes.webp",
       x     : 32,
       y     : 2400,
       width : 480,
@@ -107,7 +107,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "image",
-      src   : "images/methexis/christopher-anderson_karoline-leavitt-white-house-press-secretary.jpeg",
+      src   : "images/methexis/christopher-anderson_karoline-leavitt-white-house-press-secretary.webp",
       x     : 544,
       y     : 2400,
       width : 480,
@@ -126,7 +126,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "image",
-      src   : "images/methexis/methexis-questionnaire.png",
+      src   : "images/methexis/methexis-questionnaire.webp",
       x     : 320,
       y     : 3168,
       width : 416,
@@ -143,7 +143,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "image",
-      src   : "images/methexis/dessin-lilas.jpeg",
+      src   : "images/methexis/dessin-lilas.webp",
       x     : 800,
       y     : 3264,
       width : 672,
@@ -152,7 +152,7 @@ const METHEXIS_CONFIG = {
     },
         {
       type  : "image",
-      src   : "images/methexis/jamais-assez-toujours-trop.jpg",
+      src   : "images/methexis/jamais-assez-toujours-trop.webp",
       x     : 895.789,
       y     : 4192,
       width : 864.211,
@@ -161,7 +161,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "image",
-      src   : "images/methexis/stimming.jpg",
+      src   : "images/methexis/stimming.webp",
       x     : 895.859,
       y     : 4800,
       width : 576.141,
@@ -199,7 +199,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "image",
-      src   : "images/methexis/submersion.JPG",
+      src   : "images/methexis/submersion.webp",
       x     : 479.89,
       y     : 5312,
       width : 608.11,
@@ -208,7 +208,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "image",
-      src   : "images/methexis/undiagnose-autism-percentage-by-age.png",
+      src   : "images/methexis/undiagnose-autism-percentage-by-age.webp",
       x     : 1116.225,
       y     : 5306.835,
       width : 402.061,
@@ -225,7 +225,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "image",
-      src   : "images/methexis/miniature-portfolio.jpg",
+      src   : "images/methexis/miniature-portfolio.webp",
       x     : 82.346,
       y     : 6368,
       width : 928,
@@ -242,7 +242,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "image",
-      src   : "images/methexis/document-florine-recto-verso.jpg",
+      src   : "images/methexis/document-florine-recto-verso.webp",
       x     : 1170.346,
       y     : 6651.263,
       width : 589.672,
@@ -251,7 +251,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "image",
-      src   : "images/methexis/erwin-olaf_danse-in-close-up.JPG",
+      src   : "images/methexis/erwin-olaf_danse-in-close-up.webp",
       x     : 1344,
       y     : 7872,
       width : 384,
@@ -268,7 +268,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "video",
-      src   : "videos/methexis/DSCF5976_1.mp4",
+      src   : "videos/methexis/methexis_web.mp4",
       x     : 160,
       y     : 7872,
       width : 1151.893,
@@ -277,7 +277,7 @@ const METHEXIS_CONFIG = {
     },
     {
       type  : "image",
-      src   : "images/methexis/20250504_montpellier_moco_eprouver-l-inconnu_christophe-berdaguer-et-marie-pejus_sculpture-hysterique_2017_detail.JPG",
+      src   : "images/methexis/20250504_montpellier_moco_eprouver-l-inconnu_christophe-berdaguer-et-marie-pejus_sculpture-hysterique_2017_detail.webp",
       x     : 1344,
       y     : 8192,
       width : 245.43,

@@ -34,7 +34,7 @@ const BEFORE_DONT_LOOK_UP_CONFIG = {
   elements: [
     {
       type   : "image",
-      src    : "images/before-dont-look-up/collage-fleur.jpg",
+      src    : "images/before-dont-look-up/collage-fleur.webp",
       x      : 96,
       y      : 32,
       width  : 764.657,
@@ -51,7 +51,7 @@ const BEFORE_DONT_LOOK_UP_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/before-dont-look-up/collage-voiture.jpg",
+      src    : "images/before-dont-look-up/collage-voiture.webp",
       x      : 1119,
       y      : 541.771+32,
       width  : 552.96,
@@ -60,7 +60,7 @@ const BEFORE_DONT_LOOK_UP_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/before-dont-look-up/collage-marie.jpg",
+      src    : "images/before-dont-look-up/collage-marie.webp",
       x      : 322.343,
       y      : 1112,
       width  : 764.657,
@@ -69,7 +69,7 @@ const BEFORE_DONT_LOOK_UP_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/before-dont-look-up/collage-jean-claude.jpg",
+      src    : "images/before-dont-look-up/collage-jean-claude.webp",
       x      : 1119,
       y      : 1112,
       width  : 765,
@@ -96,7 +96,7 @@ const BEFORE_DONT_LOOK_UP_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/before-dont-look-up/collage-bureau-mer.jpg",
+      src    : "images/before-dont-look-up/collage-bureau-mer.webp",
       x      : 96,
       y      : 2303.186+480,
       width  : 1212,
@@ -121,7 +121,7 @@ const BEFORE_DONT_LOOK_UP_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/before-dont-look-up/natacha-de-mahieu_france-theatre-of-authenticity.jpg",
+      src    : "images/before-dont-look-up/natacha-de-mahieu_france-theatre-of-authenticity.webp",
       x      : 960,
       y      : 3349.1-60+480,
       width  : 832,
@@ -130,7 +130,7 @@ const BEFORE_DONT_LOOK_UP_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/before-dont-look-up/rene-magritte_gloconde_1953.jpg",
+      src    : "images/before-dont-look-up/rene-magritte_gloconde_1953.webp",
       x      : 238,
       y      : 3904-60+480,
       width  : 402,
@@ -139,7 +139,7 @@ const BEFORE_DONT_LOOK_UP_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/before-dont-look-up/grete-stern_el-ojo-eterno_1950.png",
+      src    : "images/before-dont-look-up/grete-stern_el-ojo-eterno_1950.webp",
       x      : 238,
       y      : 4560+480,
       width  : 265,
@@ -148,7 +148,7 @@ const BEFORE_DONT_LOOK_UP_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/before-dont-look-up/martha-rosler_red-stripe-kitchen_1967-1972.jpg",
+      src    : "images/before-dont-look-up/martha-rosler_red-stripe-kitchen_1967-1972.webp",
       x      : 690,
       y      : 4320+480,
       width  : 574,
@@ -157,7 +157,7 @@ const BEFORE_DONT_LOOK_UP_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/before-dont-look-up/martha-rosler_photo-op_2004.png",
+      src    : "images/before-dont-look-up/martha-rosler_photo-op_2004.webp",
       x      : 1293.874,
       y      : 4830+480,
       width  : 441.144,
