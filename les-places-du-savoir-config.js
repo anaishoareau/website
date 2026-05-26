@@ -36,16 +36,16 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
       type   : "image",
       src    : "images/les-places-du-savoir/DSCF3321.webp",
       x      : 64,
-      y      : 225,
+      y      : 225-50,
       width  : 1118.477,
       label  : "(a).",
       alt    : "bureau de Maxime à Lyon, 2025"
     },
     {
       type    : "texte",
-      contenu : "<em>Les places du savoir</em> cherche à traverser les lieux empruntés pendant la thèse d’un jeune chercheur, autant physiquement qu’intellectuellement. C’est une étude sur la recherche contemporaine via la place qu’elle occupe dans le quotidien du chercheur.",
+      contenu : "<em>Les places du savoir</em> cherche à traverser les lieux empruntés pendant la thèse d’un jeune chercheur, autant physiquement, qu’intellectuellement. C’est une étude sur la recherche contemporaine, via la place qu’elle occupe dans le quotidien du chercheur.",
       x       : 64+1118.477+32,
-      y       : 225,
+      y       : 225-50,
       width   : 400,
       taille  : "0.7rem"
     },
@@ -54,14 +54,14 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
       contenu : "(a). <em>bureau de Maxime à Lyon</em>, 2025\n(b). <em>entretien du vivarium</em>, 2025\n(c). <em>auto-portrait dans le bassin sur la terrasse</em>, 2025\n(d). <em>table du salon</em>, 2025\n(e). <em>les lamiacées</em>, 2025\n(f). <em>insecte du rez-de-chaussée</em>, 2025\n",
       x       : 1400,
       y       : 1080+40+50,
-      width   : 608,
+      width   : 400,
       taille  : "0.7rem"
     },
     {
       type   : "image",
       src    : "images/les-places-du-savoir/DSCF3407.webp",
       x      : 213,
-      y      : 1080+40,
+      y      : 1080+10,
       width  : 677,
       label  : "(b).",
       alt    : "entretien du vivarium, 2025"
@@ -70,7 +70,7 @@ const LES_PLACES_DU_SAVOIR_CONFIG = {
       type   : "image",
       src    : "images/les-places-du-savoir/DSCF3344.webp",
       x      : 922,
-      y      : 1506,
+      y      : 1506+10,
       width  : 560,
       label  : "(c).",
       alt    : "auto-portrait dans le bassin sur la terrasse, 2025"
