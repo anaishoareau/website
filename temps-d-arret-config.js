@@ -34,7 +34,7 @@ const TEMPS_D_ARRET_CONFIG = {
   elements: [
     {
       type   : "image",
-      src    : "images/temps-d-arret/DSCF1273-3.jpg",
+      src    : "images/temps-d-arret/DSCF1273-3.webp",
       x      : 96,
       y      : 565.069,
       width  : 628.09,
@@ -43,7 +43,7 @@ const TEMPS_D_ARRET_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/temps-d-arret/5-DSCF1114.jpg",
+      src    : "images/temps-d-arret/5-DSCF1114.webp",
       x      : 760.09,
       y      : 286.507,
       width  : 464.882,
@@ -52,7 +52,7 @@ const TEMPS_D_ARRET_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/temps-d-arret/DSCF1277-6.jpg",
+      src    : "images/temps-d-arret/DSCF1277-6.webp",
       x      : 1502.605,
       y      : 176,
       width  : 321.395,
@@ -71,7 +71,7 @@ const TEMPS_D_ARRET_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/temps-d-arret/DSCF1097-5.jpg",
+      src    : "images/temps-d-arret/DSCF1097-5.webp",
       x      : 924.412,
       y      : 1212,
       width  : 430.583,
@@ -80,7 +80,7 @@ const TEMPS_D_ARRET_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/temps-d-arret/DSCF1149-9.jpg",
+      src    : "images/temps-d-arret/DSCF1149-9.webp",
       x      : 1393.417,
       y      : 1335.858,
       width  : 430.583,
@@ -98,7 +98,7 @@ const TEMPS_D_ARRET_CONFIG = {
     },
     {
       type   : "image",
-      src    : "images/temps-d-arret/nikita-teryoshin_I-ve-never-been-to-russia_2019-2022.jpg",
+      src    : "images/temps-d-arret/nikita-teryoshin_I-ve-never-been-to-russia_2019-2022.webp",
       x      : 718.032+32,
       y      : 2554.075,
       width  : 413.799,
